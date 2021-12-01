@@ -3,26 +3,7 @@
 #define INF 2147483647
 //m = colums
 //n = rows
-/*
-int breathSearch(int start[2],)
-{
 
-}
-*//*
-int **createVisitedArray(input_t input, char entry[2])
-{
-    int **ret = (int**)malloc(sizeof(int*) * input.m);
-    if (!ret)
-        return NULL;
-    for (int i = 0; i < input.m; i++)
-    {
-        if ((ret[i] = (char*)malloc(sizeof(char) * input.n)) == NULL)
-            exit(-1);
-        ret[]
-
-    }
-    
-}*/
 
 char **createParrentArray(int fd, input_t input)
 {
@@ -40,6 +21,28 @@ char **createParrentArray(int fd, input_t input)
     }
     ret[input.m] = NULL;
     return ret;
+}
+
+//creating array of areas that we have visited
+int **createVisitedArray(input_t input, int *entry)
+{
+    int **cost = (int**)malloc(sizeof(int*) * input.m + 1);
+
+    for(int i = 0; i < input.m; i++)
+    {
+        cost[i] = (int*)malloc(sizeof(int) * input.n + 1);
+        for(int j = 0; j < input.n; j++)
+        {
+            cost[i][j] = INF;
+        }
+    }
+    cost[entry[0]][entry[1]] = 0;
+    return cost;
+}
+
+void breathSearch(char **parent, int **visited)
+{
+
 }
 
 int goThroughTheMap(input_t input, char *map)
